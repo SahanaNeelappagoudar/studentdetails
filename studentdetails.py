@@ -1,3 +1,5 @@
+import sys
+
 def calculate_grade(avg):
     if 90 <= avg <= 100:
         return "S"
@@ -13,18 +15,27 @@ def calculate_grade(avg):
         return "F"
 
 def main():
-    name = input("Enter student name: ")
-    dept = input("Enter department: ")
-    sem = input("Enter semester: ")
+    if len(sys.argv) < 6:
+        print("Usage: python student.py <name> <dept> <sem> <m1> <m2> <m3>")
+        print("Example: python student.py Sahana CSE 5 90 85 88")
+        return
 
-    m1 = int(input("Enter marks 1: "))
-    m2 = int(input("Enter marks 2: "))
-    m3 = int(input("Enter marks 3: "))
+    name = sys.argv[1]
+    dept = sys.argv[2]
+    sem = sys.argv[3]
+
+    try:
+        m1 = float(sys.argv[4])
+        m2 = float(sys.argv[5])
+        m3 = float(sys.argv[6])
+    except ValueError:
+        print("Error: Marks must be numbers.")
+        return
 
     avg = (m1 + m2 + m3) / 3
     grade = calculate_grade(avg)
 
-    print("\n--- Student Result ---")
+    print("---- Student Result ----")
     print("Name:", name)
     print("Department:", dept)
     print("Semester:", sem)
