@@ -1,7 +1,11 @@
-FROM python:3.12-slim
+# Use an official Python runtime as a parent image
+FROM python:3.8-slim
 
-WORKDIR /docker_studentdetails
+# Set the working directory in the container
+WORKDIR /app
 
-COPY . .
+# Copy the current directory contents into the container at /app
+COPY . /app
 
-CMD ["python", "docker_studentdetails.py"]
+# Run the script
+CMD ["python", "studentdetails.py"]
