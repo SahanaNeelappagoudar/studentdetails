@@ -4,6 +4,8 @@ FROM python:3.8-slim
 # Set the working directory in the container
 WORKDIR /app
 
+COPY requirements.txt
+RUN pip install -r requirements.txt pytest 
 # Copy the current directory contents into the container at /app
 COPY . /app
 
