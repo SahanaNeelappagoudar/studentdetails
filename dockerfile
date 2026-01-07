@@ -1,12 +1,8 @@
-# Use an official Python runtime as a parent image
 FROM python:3.13
-COPY . .
-
-# Set the working directory in the container
 WORKDIR /studentdetails
-
+COPY . .
 RUN pip install --no-cache-dir pytest
-
+# Run tests at build time (CI)
 RUN pytest
-# Run the script
-ENTRYPOINT  ["python", "studentdetails.py"]
+# FIXED entrypoint (never replaced)
+ENTRYPOINT ["python", "studentdetails.py"]
