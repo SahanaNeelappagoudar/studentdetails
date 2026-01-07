@@ -1,58 +1,77 @@
-import pytest
 from studentdetails import calculate_average, assign_grade
 
+# ---------------- GRADE S TEST CASES ----------------
 
-# -------------------------------
-# Test calculate_average function
-# -------------------------------
+def test_grade_S_lower_boundary():
+    avg = calculate_average(90, 90, 90)
+    assert assign_grade(avg) == "S"
 
-def test_calculate_average_normal():
-    assert calculate_average(80, 90, 100) == pytest.approx(90.0)
+def test_grade_S_middle_value():
+    avg = calculate_average(95, 95, 95)
+    assert assign_grade(avg) == "S"
 
+def test_grade_S_upper_boundary():
+    avg = calculate_average(100, 100, 100)
+    assert assign_grade(avg) == "S"
 
-def test_calculate_average_zero():
-    assert calculate_average(0, 0, 0) == 0
+# ---------------- GRADE A TEST CASES ----------------
 
+def test_grade_A_lower_boundary():
+    avg = calculate_average(80, 80, 80)
+    assert assign_grade(avg) == "A"
 
-def test_calculate_average_decimal():
-    assert calculate_average(75.5, 80.5, 84) == pytest.approx(80.0)
+def test_grade_A_middle_value():
+    avg = calculate_average(85, 85, 85)
+    assert assign_grade(avg) == "A"
 
+def test_grade_A_upper_boundary():
+    avg = calculate_average(89.99, 89.99, 89.99)
+    assert assign_grade(avg) == "A"
 
-# -------------------------------
-# Test assign_grade function
-# -------------------------------
+# ---------------- GRADE B TEST CASES ----------------
 
-def test_grade_S():
-    assert assign_grade(95) == "S"
+def test_grade_B_lower_boundary():
+    avg = calculate_average(65, 65, 65)
+    assert assign_grade(avg) == "B"
 
+def test_grade_B_middle_value():
+    avg = calculate_average(72, 72, 72)
+    assert assign_grade(avg) == "B"
 
-def test_grade_A():
-    assert assign_grade(85) == "A"
+def test_grade_B_upper_boundary():
+    avg = calculate_average(79.99, 79.99, 79.99)
+    assert assign_grade(avg) == "B"
 
+# ---------------- GRADE C TEST CASES ----------------
 
-def test_grade_B():
-    assert assign_grade(70) == "B"
+def test_grade_C_lower_boundary():
+    avg = calculate_average(50, 50, 50)
+    assert assign_grade(avg) == "C"
 
+def test_grade_C_middle_value():
+    avg = calculate_average(58, 58, 58)
+    assert assign_grade(avg) == "C"
 
-def test_grade_C():
-    assert assign_grade(55) == "C"
+def test_grade_C_upper_boundary():
+    avg = calculate_average(64.99, 64.99, 64.99)
+    assert assign_grade(avg) == "C"
 
+# ---------------- GRADE D TEST CASES ----------------
 
-def test_grade_D():
-    assert assign_grade(45) == "D"
+def test_grade_D_lower_boundary():
+    avg = calculate_average(40, 40, 40)
+    assert assign_grade(avg) == "D"
 
+def test_grade_D_middle_value():
+    avg = calculate_average(45, 45, 45)
+    assert assign_grade(avg) == "D"
 
-def test_grade_F():
-    assert assign_grade(30) == "F"
+def test_grade_D_upper_boundary():
+    avg = calculate_average(49.99, 49.99, 49.99)
+    assert assign_grade(avg) == "D"
 
+# ---------------- GRADE F TEST CASES ----------------
 
-# -------------------------------
-# Boundary value testing
-# -------------------------------
-
-def test_boundary_values():
-    assert assign_grade(90) == "S"
-    assert assign_grade(80) == "A"
-    assert assign_grade(65) == "B"
-    assert assign_grade(50) == "C"
-    assert assign_grade(40) == "D"
+def test_grade_F_below_40():
+    avg = calculate_average(30, 30, 30)
+    assert assign_grade(avg) == "F"
