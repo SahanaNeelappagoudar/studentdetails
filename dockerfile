@@ -3,6 +3,6 @@ WORKDIR /studentdetails
 COPY . .
 RUN pip install --no-cache-dir pytest
 # Run tests at build time (CI)
-RUN pytest -v 
+RUN pytest -v --cache-clear
 # FIXED entrypoint (never replaced)
 ENTRYPOINT ["python", "studentdetails.py"]
